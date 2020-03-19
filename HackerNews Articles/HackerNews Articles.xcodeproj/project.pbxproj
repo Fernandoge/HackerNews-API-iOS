@@ -13,6 +13,8 @@
 		6B7180ED24242D140046F573 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B7180EB24242D140046F573 /* Main.storyboard */; };
 		6B7180EF24242D160046F573 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B7180EE24242D160046F573 /* Assets.xcassets */; };
 		6B7180F224242D160046F573 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B7180F024242D160046F573 /* LaunchScreen.storyboard */; };
+		6B7180FD242435A70046F573 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7180FC242435A70046F573 /* Article.swift */; };
+		6B7180FF242436210046F573 /* HackerNewsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7180FE242436210046F573 /* HackerNewsData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		6B7180EE24242D160046F573 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6B7180F124242D160046F573 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6B7180F324242D160046F573 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6B7180FC242435A70046F573 /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
+		6B7180FE242436210046F573 /* HackerNewsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HackerNewsData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +75,8 @@
 		6B7180F92424301B0046F573 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				6B7180FC242435A70046F573 /* Article.swift */,
+				6B7180FE242436210046F573 /* HackerNewsData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -163,6 +169,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				6B7180EA24242D140046F573 /* ViewController.swift in Sources */,
+				6B7180FD242435A70046F573 /* Article.swift in Sources */,
+				6B7180FF242436210046F573 /* HackerNewsData.swift in Sources */,
 				6B7180E624242D140046F573 /* AppDelegate.swift in Sources */,
 				6B7180E824242D140046F573 /* SceneDelegate.swift in Sources */,
 			);
