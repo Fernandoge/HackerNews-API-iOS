@@ -56,15 +56,39 @@
 		6B7180E424242D140046F573 /* HackerNews Articles */ = {
 			isa = PBXGroup;
 			children = (
+				6B7180F92424301B0046F573 /* Model */,
+				6B7180FA2424302A0046F573 /* View */,
+				6B7180FB242430350046F573 /* Controller */,
 				6B7180E524242D140046F573 /* AppDelegate.swift */,
 				6B7180E724242D140046F573 /* SceneDelegate.swift */,
-				6B7180E924242D140046F573 /* ViewController.swift */,
-				6B7180EB24242D140046F573 /* Main.storyboard */,
 				6B7180EE24242D160046F573 /* Assets.xcassets */,
 				6B7180F024242D160046F573 /* LaunchScreen.storyboard */,
 				6B7180F324242D160046F573 /* Info.plist */,
 			);
 			path = "HackerNews Articles";
+			sourceTree = "<group>";
+		};
+		6B7180F92424301B0046F573 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		6B7180FA2424302A0046F573 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				6B7180EB24242D140046F573 /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		6B7180FB242430350046F573 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				6B7180E924242D140046F573 /* ViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
