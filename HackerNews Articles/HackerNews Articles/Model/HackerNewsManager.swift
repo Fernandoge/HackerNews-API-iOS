@@ -85,7 +85,10 @@ class HackerNewsManager: NSObject, URLSessionDataDelegate, URLSessionTaskDelegat
         var articles = [Article]()
         formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.000Z"
         
+        //Loop each article
         for hit in data.hits {
+            
+            //Article name
             var name = ""
             if let safeName = hit.story_title {
                 name = safeName
@@ -93,20 +96,32 @@ class HackerNewsManager: NSObject, URLSessionDataDelegate, URLSessionTaskDelegat
                 name = safeName
             }
             
+            //Article author
             let author = hit.author
             
-            let creationDate = hit.created_at
-            if let date = formatter.date(from: creationDate) {
-                let relativeData = date.elapsedTime(toDate: currentDate)
-                print(relativeData)
+            //Article creation elapsed time
+            let creationDateString = hit.created_at
+            var creationDate = Date()
+            if let safeDate = formatter.date(from: creationDateString) {
+                creationDate = safeDate
             }
             
+            //Article URL
             var URL = ""
             if let safeURL = hit.story_url {
                 URL = safeURL
             }
             
-            let articleModel = Article(name: name, author: author, creationElapsedTime: creationDate, articleURL: URL)
+            //Article model creation
+            let articleModel = Article()
+            articleModel.name = name
+            articleModel.author = author
+            articleModel.creationDate = creationDate
+            articleModel.articleURL = URL
+            //Assign the article primary key
+            articleModel.compoundKeyValue()
+            
+            //Add article model
             articles.append(articleModel)
         }
         return articles

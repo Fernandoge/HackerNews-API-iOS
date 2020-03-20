@@ -7,10 +7,20 @@
 //
 
 import Foundation
+import RealmSwift
 
-struct Article: Codable {
-    var name: String
-    var author: String
-    var creationElapsedTime: String
-    var articleURL: String
+class Article: Object {
+    @objc dynamic var name = ""
+    @objc dynamic var author = ""
+    @objc dynamic var creationDate = Date()
+    @objc dynamic var articleURL = ""
+    @objc dynamic var compoundKey = ""
+    
+    override class func primaryKey() -> String? {
+        return "compoundKey"
+    }
+    
+    func compoundKeyValue(){
+        compoundKey = "\(articleURL)\(author)"
+    }
 }
