@@ -12,9 +12,12 @@ class HackerNewsArticlesViewController: UITableViewController {
 
     var articlesArray: [Article] = []
     var articleURL = ""
+    var hackerNewsManager = HackerNewsManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        hackerNewsManager.delegate = self
+        hackerNewsManager.fetchArticles()
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -28,3 +31,17 @@ class HackerNewsArticlesViewController: UITableViewController {
     }
 }
 
+//MARK: - HackerNewsManagerDelegate
+
+extension HackerNewsArticlesViewController: HackerNewsManagerDelegate {
+    func didUpdateArticles(_ hackerNewsManager: HackerNewsManager, articles: [Article]) {
+        DispatchQueue.main.async {
+            self.articlesArray = articles
+            self.tableView.reloadData()
+        }
+    }
+    
+    func didFailedWithError(error: Error) {
+        print(error.localizedDescription)
+    }
+}
