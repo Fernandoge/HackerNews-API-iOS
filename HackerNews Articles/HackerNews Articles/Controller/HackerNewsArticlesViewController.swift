@@ -10,6 +10,8 @@ import UIKit
 
 class HackerNewsArticlesViewController: UITableViewController {
 
+    @IBOutlet weak var articlesRefresher: UIRefreshControl!
+    
     var articlesArray: [Article] = []
     var articleURL = ""
     var hackerNewsManager = HackerNewsManager()
@@ -19,6 +21,11 @@ class HackerNewsArticlesViewController: UITableViewController {
         hackerNewsManager.delegate = self
         hackerNewsManager.fetchArticles()
     }
+    
+    @IBAction func refresh(_ sender: UIRefreshControl) {
+        hackerNewsManager.fetchArticles()
+    }
+    
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return articlesArray.count
@@ -37,6 +44,7 @@ extension HackerNewsArticlesViewController: HackerNewsManagerDelegate {
     func didUpdateArticles(_ hackerNewsManager: HackerNewsManager, articles: [Article]) {
         DispatchQueue.main.async {
             self.articlesArray = articles
+            self.articlesRefresher.endRefreshing()
             self.tableView.reloadData()
         }
     }
