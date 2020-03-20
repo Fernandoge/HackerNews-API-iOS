@@ -3,11 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		19864131C8915749FAB06C07 /* Pods_HackerNews_Articles.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C82088A17B0F7295AF1FA876 /* Pods_HackerNews_Articles.framework */; };
+		6B6BDE33242583C300861454 /* ArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6BDE32242583C300861454 /* ArticleViewController.swift */; };
 		6B7180E624242D140046F573 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7180E524242D140046F573 /* AppDelegate.swift */; };
 		6B7180E824242D140046F573 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7180E724242D140046F573 /* SceneDelegate.swift */; };
 		6B7180EA24242D140046F573 /* HackerNewsArticlesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7180E924242D140046F573 /* HackerNewsArticlesViewController.swift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6B6BDE32242583C300861454 /* ArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleViewController.swift; sourceTree = "<group>"; };
 		6B7180E224242D140046F573 /* HackerNews Articles.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HackerNews Articles.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B7180E524242D140046F573 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6B7180E724242D140046F573 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -56,7 +58,6 @@
 				7F59BE2FEB5A27EC2F45F25E /* Pods-HackerNews Articles.debug.xcconfig */,
 				A5C465867FB1E20BF4FF27C9 /* Pods-HackerNews Articles.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -116,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				6B7180E924242D140046F573 /* HackerNewsArticlesViewController.swift */,
+				6B6BDE32242583C300861454 /* ArticleViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -244,6 +246,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6B718101242447EC0046F573 /* HackerNewsManager.swift in Sources */,
+				6B6BDE33242583C300861454 /* ArticleViewController.swift in Sources */,
 				6B718103242448070046F573 /* Date+ElapsedTime.swift in Sources */,
 				6B7180FD242435A70046F573 /* Article.swift in Sources */,
 				6B7180EA24242D140046F573 /* HackerNewsArticlesViewController.swift in Sources */,
