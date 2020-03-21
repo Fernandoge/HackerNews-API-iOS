@@ -73,8 +73,11 @@ class HackerNewsArticlesViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        cell.textLabel?.text = articlesArray[indexPath.section][indexPath.row].name
         let cell = tableView.dequeueReusableCell(withIdentifier: "ArticleCell", for: indexPath) as! SwipeTableViewCell
+        let article = articlesArray[indexPath.section][indexPath.row]
+        cell.textLabel?.text = article.name
+        let articleElapsedTime = article.creationDate.elapsedTime(toDate: currentDate)
+        cell.detailTextLabel?.text = "\(article.author) - \(articleElapsedTime)"
         cell.delegate = self
         return cell
     }
@@ -123,14 +126,19 @@ class HackerNewsArticlesViewController: UITableViewController {
     
     func getDownloadedArticles() -> [Article]{
         let downloadedArticles = realm.objects(Article.self)
-        let downloadedArticlesArray = Array(downloadedArticles.reversed())
-        return downloadedArticlesArray
+        let downloadedArticlesArray = Array(downloadedArticles)
+        let sortedDownloadedArticles = downloadedArticlesArray.sorted(by: { $0.creationDate.compare($1.creationDate) == .orderedDescending } )
+        return sortedDownloadedArticles
     }
     
     func loadArticles(recentArticles: [Article], downloadedArticles: [Article]) {
+        //Get current date to calculate article creation elapsed time
+        currentDate = Date()
+        //Create the new articles array using fetched articles and the articles from the database
         articlesArray = []
         articlesArray.append(recentArticles)
         articlesArray.append(downloadedArticles)
+        //End refresher and reload table view data
         DispatchQueue.main.async {
             self.articlesRefresher.endRefreshing()
             self.tableView.reloadData()
