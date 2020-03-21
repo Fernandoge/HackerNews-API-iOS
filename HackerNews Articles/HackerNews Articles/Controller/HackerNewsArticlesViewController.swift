@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import SwipeCellKit
 
 class HackerNewsArticlesViewController: UITableViewController {
 
@@ -17,6 +18,9 @@ class HackerNewsArticlesViewController: UITableViewController {
     var articlesArray: [[Article]] = []
     var selectedArticleURL = ""
     var hackerNewsManager = HackerNewsManager()
+    var currentDate = Date()
+    
+    //MARK: -- View lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,8 +73,9 @@ class HackerNewsArticlesViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ArticleCell", for: indexPath)
         cell.textLabel?.text = articlesArray[indexPath.section][indexPath.row].name
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ArticleCell", for: indexPath) as! SwipeTableViewCell
+        cell.delegate = self
         return cell
     }
     
@@ -90,6 +95,29 @@ class HackerNewsArticlesViewController: UITableViewController {
             }
         } catch {
             print ("Error saving downloaded article \(error)")
+        }
+    }
+    
+    func saveDeletedArticle(article: Article) {
+        let deletedArticle = DeletedArticle()
+        deletedArticle.articleURL = article.articleURL
+        deletedArticle.author = article.author
+        do {
+            try realm.write {
+                realm.add(deletedArticle)
+            }
+        } catch {
+            print ("Error saving deleted article \(error)")
+        }
+    }
+    
+    func deleteArticle(article: Article, isDownloaded: Bool) {
+        saveDeletedArticle(article: article)
+        //Delete the article from database if it's was downloaded before
+        if isDownloaded {
+            try! realm.write {
+                realm.delete(article)
+            }
         }
     }
     
@@ -120,5 +148,30 @@ extension HackerNewsArticlesViewController: HackerNewsManagerDelegate {
     
     func didFailedWithError(error: Error) {
         print(error.localizedDescription)
+    }
+}
+
+//MARK: - SwipeTableViewCellDelegate
+
+extension HackerNewsArticlesViewController: SwipeTableViewCellDelegate {
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
+        
+        guard orientation == .right else { return nil }
+        
+        let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
+            let removedArticle = self.articlesArray[indexPath.section][indexPath.row]
+            let isDownloaded = indexPath.section == 0 ? false : true
+            self.deleteArticle(article: removedArticle, isDownloaded: isDownloaded)
+            self.articlesArray[indexPath.section].remove(at: indexPath.row)
+        }
+
+        return [deleteAction]
+        
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeTableOptions {
+        var options = SwipeTableOptions()
+        options.expansionStyle = .destructive
+        return options
     }
 }
