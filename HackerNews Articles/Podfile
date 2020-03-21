@@ -7,5 +7,6 @@ target 'HackerNews Articles' do
 
   # Pods for HackerNews Articles
   pod 'RealmSwift'
+  pod 'SwipeCellKit'
 
 end
