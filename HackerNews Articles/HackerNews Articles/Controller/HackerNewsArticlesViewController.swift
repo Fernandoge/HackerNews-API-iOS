@@ -51,8 +51,9 @@ class HackerNewsArticlesViewController: UITableViewController {
     
     //MARK: -- Table view methods
     
-    let headerTitles = ["Recent Articles", "Downloaded Articles"]
+    var headerTitles = ["", "Downloaded articles"]
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        headerTitles[0] = articlesArray[0].count != 0 ? "Recent articles" : "Recent articles not found"
         if section < headerTitles.count {
             return headerTitles[section]
         }

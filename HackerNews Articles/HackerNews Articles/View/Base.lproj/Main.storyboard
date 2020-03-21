@@ -89,10 +89,44 @@
                     <view key="view" contentMode="scaleToFill" id="8Yb-4R-q1X">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Iqe-zc-T02">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <subviews>
+                                    <wkWebView hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QLm-4w-4ga">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="0.0"/>
+                                        <wkWebViewConfiguration key="configuration">
+                                            <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                            <wkPreferences key="preferences"/>
+                                        </wkWebViewConfiguration>
+                                    </wkWebView>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="mzz-td-DIY">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
+                                    </activityIndicatorView>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BKu-DY-eAn">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="0.0"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="8ma-Wi-ylk" firstAttribute="bottom" secondItem="Iqe-zc-T02" secondAttribute="bottom" id="AEQ-q2-o3f"/>
+                            <constraint firstItem="Iqe-zc-T02" firstAttribute="leading" secondItem="8ma-Wi-ylk" secondAttribute="leading" id="JBX-Yo-DbM"/>
+                            <constraint firstItem="Iqe-zc-T02" firstAttribute="top" secondItem="8ma-Wi-ylk" secondAttribute="top" id="eaR-Tz-332"/>
+                            <constraint firstItem="8ma-Wi-ylk" firstAttribute="trailing" secondItem="Iqe-zc-T02" secondAttribute="trailing" id="mcW-77-Yr5"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="8ma-Wi-ylk"/>
                     </view>
                     <navigationItem key="navigationItem" id="Hmc-kJ-t0g"/>
+                    <connections>
+                        <outlet property="activityIndicator" destination="mzz-td-DIY" id="h4W-Cn-Zfc"/>
+                        <outlet property="articleWebView" destination="QLm-4w-4ga" id="VZK-7F-zZp"/>
+                        <outlet property="errorLabel" destination="BKu-DY-eAn" id="XIH-l3-qAD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bYU-L3-s0x" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
