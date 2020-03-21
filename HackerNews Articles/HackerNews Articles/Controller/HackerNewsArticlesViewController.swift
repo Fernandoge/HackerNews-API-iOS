@@ -16,7 +16,7 @@ class HackerNewsArticlesViewController: UITableViewController {
     
     let realm = try! Realm()
     var articlesArray: [[Article]] = []
-    var selectedArticleURL = ""
+    var selectedArticle = Article()
     var hackerNewsManager = HackerNewsManager()
     var currentDate = Date()
     
@@ -40,7 +40,7 @@ class HackerNewsArticlesViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "showArticle") {
             if let destiny = segue.destination as? ArticleViewController {
-                destiny.articleURL = selectedArticleURL
+                destiny.article = selectedArticle
             }
         }
     }
@@ -51,7 +51,7 @@ class HackerNewsArticlesViewController: UITableViewController {
     
     //MARK: -- Table view methods
     
-    var headerTitles = ["", "Downloaded articles"]
+    var headerTitles = ["", "Previously opened articles"]
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         headerTitles[0] = articlesArray[0].count != 0 ? "Recent articles" : "Recent articles not found"
         if section < headerTitles.count {
@@ -84,23 +84,11 @@ class HackerNewsArticlesViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedArticle = articlesArray[indexPath.section][indexPath.row]
-        selectedArticleURL = selectedArticle.articleURL
-        saveDownloadedArticle(article: selectedArticle)
+        selectedArticle = articlesArray[indexPath.section][indexPath.row]
         performSegue(withIdentifier: "showArticle", sender: self)
     }
     
     //MARK: - Data Manipulation Methods
-    
-    func saveDownloadedArticle(article: Article) {
-        do {
-            try realm.write {
-                realm.add(article, update: .modified)
-            }
-        } catch {
-            print ("Error saving downloaded article \(error)")
-        }
-    }
     
     func saveDeletedArticle(article: Article) {
         let deletedArticle = DeletedArticle()
