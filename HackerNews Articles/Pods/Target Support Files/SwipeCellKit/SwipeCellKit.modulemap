@@ -1,4 +1,4 @@
-framework module SwipeCellKit {
+module SwipeCellKit {
   umbrella header "SwipeCellKit-umbrella.h"
 
   export *

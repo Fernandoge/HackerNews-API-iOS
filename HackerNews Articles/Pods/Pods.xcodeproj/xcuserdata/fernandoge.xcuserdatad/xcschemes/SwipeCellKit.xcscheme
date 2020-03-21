@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "1DE44C23B82E6671E9E1541D06DE0E87"
-               BuildableName = "SwipeCellKit.framework"
+               BuildableName = "libSwipeCellKit.a"
                BlueprintName = "SwipeCellKit"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>

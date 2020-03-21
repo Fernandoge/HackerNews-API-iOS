@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		19864131C8915749FAB06C07 /* Pods_HackerNews_Articles.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C82088A17B0F7295AF1FA876 /* Pods_HackerNews_Articles.framework */; };
+		1238692642D4E98610EFAF94 /* libPods-HackerNews Articles.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F50A5B3DFE4F0F6658E349EB /* libPods-HackerNews Articles.a */; };
 		6B6BDE33242583C300861454 /* ArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6BDE32242583C300861454 /* ArticleViewController.swift */; };
 		6B6BDE352425998700861454 /* DeletedArticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6BDE342425998700861454 /* DeletedArticle.swift */; };
 		6B7180E624242D140046F573 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7180E524242D140046F573 /* AppDelegate.swift */; };
@@ -25,6 +25,9 @@
 /* Begin PBXFileReference section */
 		6B6BDE32242583C300861454 /* ArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleViewController.swift; sourceTree = "<group>"; };
 		6B6BDE342425998700861454 /* DeletedArticle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletedArticle.swift; sourceTree = "<group>"; };
+		6B6BDE362425B34100861454 /* Realm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Realm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6B6BDE3A2425B34500861454 /* RealmSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6B6BDE3D2425B3A400861454 /* Realm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Realm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B7180E224242D140046F573 /* HackerNews Articles.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HackerNews Articles.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B7180E524242D140046F573 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6B7180E724242D140046F573 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -39,7 +42,7 @@
 		6B718102242448070046F573 /* Date+ElapsedTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+ElapsedTime.swift"; sourceTree = "<group>"; };
 		7F59BE2FEB5A27EC2F45F25E /* Pods-HackerNews Articles.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HackerNews Articles.debug.xcconfig"; path = "Target Support Files/Pods-HackerNews Articles/Pods-HackerNews Articles.debug.xcconfig"; sourceTree = "<group>"; };
 		A5C465867FB1E20BF4FF27C9 /* Pods-HackerNews Articles.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HackerNews Articles.release.xcconfig"; path = "Target Support Files/Pods-HackerNews Articles/Pods-HackerNews Articles.release.xcconfig"; sourceTree = "<group>"; };
-		C82088A17B0F7295AF1FA876 /* Pods_HackerNews_Articles.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HackerNews_Articles.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F50A5B3DFE4F0F6658E349EB /* libPods-HackerNews Articles.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HackerNews Articles.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,7 +50,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				19864131C8915749FAB06C07 /* Pods_HackerNews_Articles.framework in Frameworks */,
+				1238692642D4E98610EFAF94 /* libPods-HackerNews Articles.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -128,7 +131,10 @@
 		8E909E7E77FB8E8E4163F95C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C82088A17B0F7295AF1FA876 /* Pods_HackerNews_Articles.framework */,
+				6B6BDE3D2425B3A400861454 /* Realm.framework */,
+				6B6BDE3A2425B34500861454 /* RealmSwift.framework */,
+				6B6BDE362425B34100861454 /* Realm.framework */,
+				F50A5B3DFE4F0F6658E349EB /* libPods-HackerNews Articles.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -144,7 +150,6 @@
 				6B7180DE24242D140046F573 /* Sources */,
 				6B7180DF24242D140046F573 /* Frameworks */,
 				6B7180E024242D140046F573 /* Resources */,
-				FE9E774575DA3D661A5A036E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -222,23 +227,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		FE9E774575DA3D661A5A036E /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-HackerNews Articles/Pods-HackerNews Articles-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-HackerNews Articles/Pods-HackerNews Articles-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HackerNews Articles/Pods-HackerNews Articles-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
