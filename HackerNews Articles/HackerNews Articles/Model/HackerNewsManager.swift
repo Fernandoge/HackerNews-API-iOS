@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RealmSwift
 
 protocol HackerNewsManagerDelegate {
     func didUpdateArticles(_ hackerNewsManager: HackerNewsManager, articles: [Article])
@@ -15,6 +16,7 @@ protocol HackerNewsManagerDelegate {
 
 class HackerNewsManager: NSObject, URLSessionDataDelegate, URLSessionTaskDelegate {
     
+    let realm = try! Realm()
     var delegate: HackerNewsManagerDelegate?
     
     let hackerNewsURL = "https://hn.algolia.com/api/v1/search_by_date?query=ios"
@@ -85,6 +87,9 @@ class HackerNewsManager: NSObject, URLSessionDataDelegate, URLSessionTaskDelegat
         var articles = [Article]()
         formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.000Z"
         
+        let deletedArticles = realm.objects(DeletedArticle.self)
+        let deletedArticlesArray = Array(deletedArticles)
+        
         //Loop each article
         for hit in data.hits {
             
@@ -121,8 +126,10 @@ class HackerNewsManager: NSObject, URLSessionDataDelegate, URLSessionTaskDelegat
             //Assign the article primary key
             articleModel.compoundKeyValue()
             
-            //Add article model
-            articles.append(articleModel)
+            //Add article model to articles array if it isn't a deleted article
+            if !deletedArticlesArray.contains(where: { $0.articleURL == articleModel.articleURL && $0.author == articleModel.author}) {
+                articles.append(articleModel)
+            }
         }
         return articles
     }
